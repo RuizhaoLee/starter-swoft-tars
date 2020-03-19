@@ -16,25 +16,14 @@ if ($whichPHPoutput && $whichPHPoutput[0] ?? null) {
 
 if ($cmd === 'start') {
     $cmd = "$php_bin $dir/bin/swoft tars:run --cmd=$cmd --config_path=$config_path ";
-    exec($cmd, $output, $return_var);
+    system($cmd, $return_var);
     if ($return_var === 0) {
-        exec("$php_bin $dir/bin/swoft http:start -d", $output, $returnvar);
-        if ($returnvar === 0) {
-            $output = implode('', $output);
-            if (file_get_contents(__DIR__ . '/runtime/swoft.pid')) {
-                $pid = file_get_contents(__DIR__ . '/runtime/swoft.pid');
-                // exec("ps -ax | awk '{ print $1 }' | grep -e \"^${pid}$\"", $output, $r);
-                // var_dump($r);
-            }
-        }
+        system("$php_bin $dir/bin/swoft http:start -d", $returnvar);
     }
 } else if ($cmd === 'stop') {
     $cmd = "$php_bin $dir/bin/swoft tars:run --cmd=$cmd --config_path=$config_path ";
-    exec($cmd, $output, $return_var);
+    system($cmd, $return_var);
     if ($return_var === 0) {
-        exec("$php_bin $dir/bin/swoft http:stop", $output, $returnvar);
-        if ($returnvar === 0 && !file_exists(__DIR__ . '/runtime/swoft.pid')) {
-
-        }
+        system("$php_bin $dir/bin/swoft http:stop", $returnvar);
     }
 }
