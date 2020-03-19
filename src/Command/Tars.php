@@ -42,12 +42,12 @@ class Tars
 
     /**
      * Tars初始化脚本
-     * @CommandOption(name="initialize")
+     * @CommandMapping(name="init")
      * @param Input $input
      */
     public function commandInitialize(Input $input): void
     {
-        file_put_contents(alias('@base') . '/index.php', file_get_contents(__DIR__ . '/stdio/_index.php'));
+        file_put_contents(alias('@base') . '/index.php', file_get_contents(__DIR__ . '/stdio/_index.tpl'));
         CLog::info('initialize index script successful!');
     }
 
