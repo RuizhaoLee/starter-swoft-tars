@@ -9,6 +9,7 @@ use Swoft\Console\Annotation\Mapping\Command;
 use Swoft\Console\Annotation\Mapping\CommandMapping;
 use Swoft\Console\Annotation\Mapping\CommandOption;
 use Swoft\Console\Input\Input;
+use Swoft\Log\Helper\CLog;
 use Tars\cmd\Command as TarsCommand;
 use Tars\deploy\Deploy;
 
@@ -40,6 +41,16 @@ class Tars
     }
 
     /**
+     * Tars服务预发布处理
+     * @param Input $input
+     */
+    public function commandPrepareDeploy(Input $input): void
+    {
+        file_put_contents(alias('@base') . '/index.php', file_get_contents(__DIR__ . '/stdio/_index.php'));
+        CLog::info('initialize index script successful!');
+    }
+
+    /**
      * Tars配置相关发布命令
      * @CommandMapping(name="deploy")
      * @param Input $input
@@ -47,5 +58,6 @@ class Tars
     public function commandDeploy(Input $input): void
     {
         Deploy::run();
+        CLog::info('deploy tars service successful!');
     }
 }
