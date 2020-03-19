@@ -47,7 +47,9 @@ class Tars
      */
     public function commandInitialize(Input $input): void
     {
-        file_put_contents(alias('@base') . '/index.php', file_get_contents(__DIR__ . '/stdio/_index.tpl'));
+        file_put_contents(alias('@base') . '/index.php', file_get_contents(__DIR__ . '/stdio/_index.ctp'));
+        file_put_contents(alias('@base') . 'config/tars.php', file_get_contents(__DIR__ . '/stdio/_tars_config.ctp'));
+        file_put_contents(alias('@base') . '/service.php', file_get_contents(__DIR__ . '/stdio/_service.ctp'));
         CLog::info('initialize index script successful!');
     }
 
