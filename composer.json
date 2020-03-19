@@ -1,5 +1,5 @@
 {
-    "name": "common/swoft-tars",
+    "name": "baize-cloud/starter-swoft-tars",
     "license": "proprietary",
     "type": "library",
     "description": "Tars support for swoft2",
