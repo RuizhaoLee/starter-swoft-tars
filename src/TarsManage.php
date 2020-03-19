@@ -85,7 +85,7 @@ class TarsManage
      */
     public function getTarsConf(): array
     {
-        $confFileName = sprintf('%s.config.con', env('APP_NAME'));
+        $confFileName = sprintf('%s.config.conf', env('APP_NAME'));
         $tars_conf = alias('@root') . '/conf/' . $confFileName;
 
         if (is_file($tars_conf)) {
