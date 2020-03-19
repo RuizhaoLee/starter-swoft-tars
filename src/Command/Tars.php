@@ -41,10 +41,11 @@ class Tars
     }
 
     /**
-     * Tars服务预发布处理
+     * Tars初始化脚本
+     * @CommandOption(name="initialize")
      * @param Input $input
      */
-    public function commandPrepareDeploy(Input $input): void
+    public function commandInitialize(Input $input): void
     {
         file_put_contents(alias('@base') . '/index.php', file_get_contents(__DIR__ . '/stdio/_index.php'));
         CLog::info('initialize index script successful!');
