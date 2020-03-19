@@ -1,0 +1,51 @@
+<?php declare(strict_types=1);
+
+
+namespace Murphy\Tars\Command;
+
+use Murphy\Tars\Util;
+use Swoft\Config\Config;
+use Swoft\Console\Annotation\Mapping\Command;
+use Swoft\Console\Annotation\Mapping\CommandMapping;
+use Swoft\Console\Annotation\Mapping\CommandOption;
+use Swoft\Console\Input\Input;
+use Tars\cmd\Command as TarsCommand;
+use Tars\deploy\Deploy;
+
+/**
+ * Class Tars
+ * @Command(name="tars")
+ * @package Murphy\Tars\Command
+ * @author  liruizhao<liruizhaoatphp@outlook.com>
+ */
+class Tars
+{
+    /**
+     * Tars框架中的启动
+     * @CommandMapping(name="run")
+     * @CommandOption("cmd", type="string", default="start", desc="执行命令")
+     * @CommandOption("config_path", short="cfg", default="string", desc="相关配置")
+     * @param Input $input
+     */
+    public function commandRun(Input $input): void
+    {
+        $opts = $input->getOpts();
+
+        $cmd = $opts['cmd'] ?? '';
+        $cfg = $opts['config_path'] ?? $opts['cfg'] ?? '';
+
+        [$hostname, $port, $appName, $serverName] = Util::parseTarsConfig($cfg);
+        $class = new TarsCommand($cmd, $cfg);
+        $class->run();
+    }
+
+    /**
+     * Tars配置相关发布命令
+     * @CommandMapping(name="deploy")
+     * @param Input $input
+     */
+    public function commandDeploy(Input $input): void
+    {
+        Deploy::run();
+    }
+}
