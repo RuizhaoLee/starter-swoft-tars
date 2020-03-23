@@ -45,4 +45,14 @@ class AutoLoader extends SwoftComponent
     {
         return [];
     }
+
+    public function beans(): array
+    {
+        return [
+            'tarsService' => [
+                'class' => bean(TarsService::class),
+                'conf' => ''
+            ]
+        ];
+    }
 }
