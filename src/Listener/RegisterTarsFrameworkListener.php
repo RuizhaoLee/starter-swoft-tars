@@ -7,7 +7,7 @@
  * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 
-namespace App\Listener;
+namespace Murphy\Tars\Listener;
 
 use Murphy\Tars\TarsManage;
 use Swoft\Bean\Annotation\Mapping\Inject;
@@ -21,7 +21,7 @@ use Swoft\Server\SwooleEvent;
  * @since 2.0
  * @Listener(event=SwooleEvent::START)
  */
-class RegisterServiceListener implements EventHandlerInterface
+class RegisterTarsFrameworkListener implements EventHandlerInterface
 {
 
     /**

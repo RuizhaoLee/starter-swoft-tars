@@ -7,7 +7,6 @@ use Murphy\Tars\TarsManage;
 use Swoft\Bean\Annotation\Mapping\Inject;
 use Swoft\Crontab\Annotaion\Mapping\Cron;
 use Swoft\Crontab\Annotaion\Mapping\Scheduled;
-use Swoft\Log\Helper\CLog;
 
 /**
  * Class TarsKeepAliveTask
